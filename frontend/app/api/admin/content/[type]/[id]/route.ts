@@ -1,32 +1,14 @@
-import { NextRequest } from "next/server";
-import { jsonBody, proxyBackend } from "../../../../_lib/backend";
+import type { NextRequest } from "next/server";
+import { deleteContent, updateContent } from "@/lib/backend/admin";
 
-const TYPES = new Set(["publications", "books", "journals"]);
-type Context = { params: Promise<{ type: string; id: string }> };
+export const dynamic = "force-dynamic";
 
-async function contentPath(context: Context) {
-  const { type, id } = await context.params;
-  return TYPES.has(type) ? `/api/admin/content/${type}/${encodeURIComponent(id)}` : null;
+type Ctx = { params: Promise<{ type: string; id: string }> };
+
+export function PUT(request: NextRequest, ctx: Ctx) {
+  return updateContent(request, ctx);
 }
 
-export async function PUT(request: NextRequest, context: Context) {
-  const path = await contentPath(context);
-  if (!path) return Response.json({ error: "Unsupported content type" }, { status: 404 });
-  const body = await jsonBody(request);
-  if (body === null) return Response.json({ error: "Invalid request body" }, { status: 400 });
-  return proxyBackend(request, path, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-}
-
-export async function PATCH(request: NextRequest, context: Context) {
-  return PUT(request, context);
-}
-
-export async function DELETE(request: NextRequest, context: Context) {
-  const path = await contentPath(context);
-  if (!path) return Response.json({ error: "Unsupported content type" }, { status: 404 });
-  return proxyBackend(request, path, { method: "DELETE" });
+export function DELETE(request: NextRequest, ctx: Ctx) {
+  return deleteContent(request, ctx);
 }

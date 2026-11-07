@@ -35,3 +35,6 @@ pnpm-debug.log*
 # OpenNext / Wrangler build output
 .open-next
 .wrangler
+
+# Local admin credentials; never commit
+CREDENTIALS.md

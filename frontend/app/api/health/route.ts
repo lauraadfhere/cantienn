@@ -1,6 +1,13 @@
-import { NextRequest } from "next/server";
-import { proxyBackend } from "../_lib/backend";
+import { getBackendConfig } from "@/lib/backend/config";
+import { json } from "@/lib/backend/http";
 
-export async function GET(request: NextRequest) {
-  return proxyBackend(request, "/api/health");
+export const dynamic = "force-dynamic";
+
+export async function GET() {
+  const config = getBackendConfig();
+  const ready = Boolean(config.parse && config.jwtSecret);
+  return json(
+    { status: ready ? "ok" : "degraded", runtime: "cloudflare-worker", parseConfigured: Boolean(config.parse) },
+    ready ? 200 : 503,
+  );
 }

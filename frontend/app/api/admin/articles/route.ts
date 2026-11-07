@@ -1,16 +1,12 @@
-import { NextRequest } from "next/server";
-import { jsonBody, proxyBackend } from "../../_lib/backend";
+import type { NextRequest } from "next/server";
+import { createArticle, listArticles } from "@/lib/backend/admin";
 
-export async function GET(request: NextRequest) {
-  return proxyBackend(request, "/api/admin/articles");
+export const dynamic = "force-dynamic";
+
+export function GET(request: NextRequest) {
+  return listArticles(request);
 }
 
-export async function POST(request: NextRequest) {
-  const body = await jsonBody(request);
-  if (body === null) return Response.json({ error: "Invalid request body" }, { status: 400 });
-  return proxyBackend(request, "/api/admin/articles", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
+export function POST(request: NextRequest) {
+  return createArticle(request);
 }

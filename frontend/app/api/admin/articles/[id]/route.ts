@@ -1,24 +1,14 @@
-import { NextRequest } from "next/server";
-import { jsonBody, proxyBackend } from "../../../_lib/backend";
+import type { NextRequest } from "next/server";
+import { deleteArticle, updateArticle } from "@/lib/backend/admin";
 
-type Context = { params: Promise<{ id: string }> };
+export const dynamic = "force-dynamic";
 
-export async function PUT(request: NextRequest, { params }: Context) {
-  const body = await jsonBody(request);
-  if (body === null) return Response.json({ error: "Invalid request body" }, { status: 400 });
-  const { id } = await params;
-  return proxyBackend(request, `/api/admin/articles/${encodeURIComponent(id)}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
+type Ctx = { params: Promise<{ id: string }> };
+
+export function PUT(request: NextRequest, ctx: Ctx) {
+  return updateArticle(request, ctx);
 }
 
-export async function PATCH(request: NextRequest, context: Context) {
-  return PUT(request, context);
-}
-
-export async function DELETE(request: NextRequest, { params }: Context) {
-  const { id } = await params;
-  return proxyBackend(request, `/api/admin/articles/${encodeURIComponent(id)}`, { method: "DELETE" });
+export function DELETE(request: NextRequest, ctx: Ctx) {
+  return deleteArticle(request, ctx);
 }

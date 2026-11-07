@@ -1,6 +1,9 @@
-import { NextRequest } from "next/server";
-import { proxyBackend } from "../../_lib/backend";
+import { aiConfigured, getNvapiConfig } from "@/lib/backend/ai";
+import { json } from "@/lib/backend/http";
 
-export async function GET(request: NextRequest) {
-  return proxyBackend(request, "/api/ai/health");
+export const dynamic = "force-dynamic";
+
+export function GET() {
+  const configured = aiConfigured();
+  return json({ status: configured ? "ok" : "not_configured", model: getNvapiConfig().model }, configured ? 200 : 503);
 }

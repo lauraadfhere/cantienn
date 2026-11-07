@@ -1,17 +1,14 @@
-import { NextRequest } from "next/server";
-import { jsonBody, proxyBackend } from "../_lib/backend";
+import { getParse, json, errorJson } from "@/lib/backend/http";
 
-export async function GET(request: NextRequest) {
-  return proxyBackend(request, "/api/articles");
-}
+export const dynamic = "force-dynamic";
 
-export async function POST(request: NextRequest) {
-  const body = await jsonBody(request);
-  if (body === null) return Response.json({ error: "Invalid request body" }, { status: 400 });
-
-  return proxyBackend(request, "/api/articles", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
+export async function GET() {
+  const parse = getParse();
+  if (!parse) return errorJson("Backend is not configured", 503);
+  try {
+    return json(await parse.listArticles());
+  } catch (error) {
+    console.error("Articles fetch failed:", error);
+    return errorJson("Failed to load articles", 502);
+  }
 }

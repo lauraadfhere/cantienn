@@ -1,6 +1,8 @@
-import { NextRequest } from "next/server";
-import { proxyBackend } from "../../_lib/backend";
+import type { NextRequest } from "next/server";
+import { listContacts } from "@/lib/backend/admin";
 
-export async function GET(request: NextRequest) {
-  return proxyBackend(request, "/api/admin/contacts");
+export const dynamic = "force-dynamic";
+
+export function GET(request: NextRequest) {
+  return listContacts(request);
 }

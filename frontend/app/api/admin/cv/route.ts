@@ -1,12 +1,8 @@
-import { NextRequest } from "next/server";
-import { jsonBody, proxyBackend } from "../../_lib/backend";
+import type { NextRequest } from "next/server";
+import { updateCV } from "@/lib/backend/admin";
 
-export async function PUT(request: NextRequest) {
-  const body = await jsonBody(request);
-  if (body === null) return Response.json({ error: "Invalid request body" }, { status: 400 });
-  return proxyBackend(request, "/api/admin/cv", {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
+export const dynamic = "force-dynamic";
+
+export function PUT(request: NextRequest) {
+  return updateCV(request);
 }
