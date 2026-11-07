@@ -1,0 +1,12 @@
+{
+  "name": "wippel-backend",
+  "version": "1.0.0",
+  "description": "WIPPEL Backend Email Testing",
+  "main": "scripts/test-email.js",
+  "scripts": {
+    "test-email": "node scripts/test-email.js"
+  },
+  "dependencies": {
+    "nodemailer": "^8.0.4"
+  }
+}

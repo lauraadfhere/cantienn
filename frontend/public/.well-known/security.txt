@@ -1,0 +1,6 @@
+Contact: security@wappil.com
+Expires: 2027-04-04T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://www.wappil.com/.well-known/security.txt
+Policy: https://www.wappil.com/security-policy
+Acknowledgments: https://www.wappil.com/security-acknowledgments

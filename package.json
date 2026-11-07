@@ -1,0 +1,25 @@
+{
+  "name": "wippel-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\" --names \"BACKEND,FRONTEND\" --prefix-colors \"blue,green\"",
+    "dev:backend": "cd backend && go run .",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && go build -o ../dist/backend.exe .",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd backend && go run .",
+    "start:frontend": "cd frontend && npm start",
+    "parse:test": "node scripts/test-parse-connection.js",
+    "parse:schema": "node scripts/generate-parse-schema.js",
+    "parse:setup": "npm run parse:test && npm run parse:schema"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

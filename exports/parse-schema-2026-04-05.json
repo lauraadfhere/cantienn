@@ -1,0 +1,494 @@
+{
+  "timestamp": "2026-04-05T10:12:46.960Z",
+  "server": "https://parseapi.back4app.com",
+  "appId": "Wj29yPUJMtvxEtlSn6mb6DsHJat8lq6w162HKleS",
+  "classes": [
+    {
+      "className": "_User",
+      "fields": {
+        "objectId": {
+          "type": "String"
+        },
+        "createdAt": {
+          "type": "Date"
+        },
+        "updatedAt": {
+          "type": "Date"
+        },
+        "ACL": {
+          "type": "ACL"
+        },
+        "username": {
+          "type": "String"
+        },
+        "password": {
+          "type": "String"
+        },
+        "email": {
+          "type": "String"
+        },
+        "emailVerified": {
+          "type": "Boolean"
+        },
+        "authData": {
+          "type": "Object"
+        }
+      },
+      "classLevelPermissions": {
+        "find": {
+          "*": true
+        },
+        "count": {
+          "*": true
+        },
+        "get": {
+          "*": true
+        },
+        "create": {
+          "*": true
+        },
+        "update": {
+          "*": true
+        },
+        "delete": {
+          "*": true
+        },
+        "addField": {
+          "*": true
+        },
+        "protectedFields": {
+          "*": []
+        }
+      },
+      "indexes": {
+        "_id_": {
+          "_id": 1
+        },
+        "username_1": {
+          "username": 1
+        },
+        "case_insensitive_username": {
+          "username": 1
+        },
+        "case_insensitive_email": {
+          "email": 1
+        },
+        "email_1": {
+          "email": 1
+        }
+      }
+    },
+    {
+      "className": "_Role",
+      "fields": {
+        "objectId": {
+          "type": "String"
+        },
+        "createdAt": {
+          "type": "Date"
+        },
+        "updatedAt": {
+          "type": "Date"
+        },
+        "ACL": {
+          "type": "ACL"
+        },
+        "name": {
+          "type": "String"
+        },
+        "users": {
+          "type": "Relation",
+          "targetClass": "_User"
+        },
+        "roles": {
+          "type": "Relation",
+          "targetClass": "_Role"
+        }
+      },
+      "classLevelPermissions": {
+        "find": {
+          "*": true
+        },
+        "count": {
+          "*": true
+        },
+        "get": {
+          "*": true
+        },
+        "create": {
+          "*": true
+        },
+        "update": {
+          "*": true
+        },
+        "delete": {
+          "*": true
+        },
+        "addField": {
+          "*": true
+        },
+        "protectedFields": {
+          "*": []
+        }
+      },
+      "indexes": {
+        "_id_": {
+          "_id": 1
+        },
+        "name_1": {
+          "name": 1
+        }
+      }
+    },
+    {
+      "className": "B4aVehicle",
+      "fields": {
+        "objectId": {
+          "type": "String"
+        },
+        "createdAt": {
+          "type": "Date"
+        },
+        "updatedAt": {
+          "type": "Date"
+        },
+        "ACL": {
+          "type": "ACL"
+        },
+        "price": {
+          "type": "Number",
+          "required": true
+        },
+        "color": {
+          "type": "String",
+          "required": false
+        },
+        "name": {
+          "type": "String",
+          "required": true
+        }
+      },
+      "classLevelPermissions": {
+        "find": {
+          "*": true
+        },
+        "count": {
+          "*": true
+        },
+        "get": {
+          "*": true
+        },
+        "create": {
+          "*": true
+        },
+        "update": {
+          "*": true
+        },
+        "delete": {
+          "*": true
+        },
+        "addField": {
+          "*": true
+        },
+        "protectedFields": {
+          "*": []
+        }
+      },
+      "indexes": {
+        "_id_": {
+          "_id": 1
+        }
+      }
+    },
+    {
+      "className": "Articles",
+      "fields": {
+        "objectId": {
+          "type": "String"
+        },
+        "createdAt": {
+          "type": "Date"
+        },
+        "updatedAt": {
+          "type": "Date"
+        },
+        "ACL": {
+          "type": "ACL"
+        },
+        "url": {
+          "type": "String"
+        },
+        "title": {
+          "type": "String"
+        },
+        "category": {
+          "type": "String"
+        },
+        "summary": {
+          "type": "String"
+        },
+        "publishedAt": {
+          "type": "String"
+        }
+      },
+      "classLevelPermissions": {
+        "find": {
+          "*": true
+        },
+        "count": {
+          "*": true
+        },
+        "get": {
+          "*": true
+        },
+        "create": {
+          "*": true
+        },
+        "update": {
+          "*": true
+        },
+        "delete": {
+          "*": true
+        },
+        "addField": {
+          "*": true
+        },
+        "protectedFields": {
+          "*": []
+        }
+      },
+      "indexes": {
+        "_id_": {
+          "_id": 1
+        },
+        "_created_at_-1": {
+          "_created_at": -1
+        }
+      }
+    },
+    {
+      "className": "CV",
+      "fields": {
+        "objectId": {
+          "type": "String"
+        },
+        "createdAt": {
+          "type": "Date"
+        },
+        "updatedAt": {
+          "type": "Date"
+        },
+        "ACL": {
+          "type": "ACL"
+        },
+        "cv_json": {
+          "type": "String"
+        }
+      },
+      "classLevelPermissions": {
+        "find": {
+          "*": true
+        },
+        "count": {
+          "*": true
+        },
+        "get": {
+          "*": true
+        },
+        "create": {
+          "*": true
+        },
+        "update": {
+          "*": true
+        },
+        "delete": {
+          "*": true
+        },
+        "addField": {
+          "*": true
+        },
+        "protectedFields": {
+          "*": []
+        }
+      }
+    },
+    {
+      "className": "Orders",
+      "fields": {
+        "objectId": {
+          "type": "String"
+        },
+        "createdAt": {
+          "type": "Date"
+        },
+        "updatedAt": {
+          "type": "Date"
+        },
+        "ACL": {
+          "type": "ACL"
+        },
+        "lang": {
+          "type": "String"
+        },
+        "name": {
+          "type": "String"
+        },
+        "service": {
+          "type": "String"
+        },
+        "company": {
+          "type": "String"
+        },
+        "email": {
+          "type": "String"
+        },
+        "budget": {
+          "type": "String"
+        },
+        "message": {
+          "type": "String"
+        },
+        "attachments": {
+          "type": "String"
+        },
+        "mediaType": {
+          "type": "String"
+        }
+      },
+      "classLevelPermissions": {
+        "find": {
+          "*": true
+        },
+        "count": {
+          "*": true
+        },
+        "get": {
+          "*": true
+        },
+        "create": {
+          "*": true
+        },
+        "update": {
+          "*": true
+        },
+        "delete": {
+          "*": true
+        },
+        "addField": {
+          "*": true
+        },
+        "protectedFields": {
+          "*": []
+        }
+      },
+      "indexes": {
+        "_id_": {
+          "_id": 1
+        }
+      }
+    },
+    {
+      "className": "Contacts",
+      "fields": {
+        "objectId": {
+          "type": "String"
+        },
+        "createdAt": {
+          "type": "Date"
+        },
+        "updatedAt": {
+          "type": "Date"
+        },
+        "ACL": {
+          "type": "ACL"
+        }
+      },
+      "classLevelPermissions": {
+        "find": {
+          "*": true
+        },
+        "count": {
+          "*": true
+        },
+        "get": {
+          "*": true
+        },
+        "create": {
+          "*": true
+        },
+        "update": {
+          "*": true
+        },
+        "delete": {
+          "*": true
+        },
+        "addField": {
+          "*": true
+        },
+        "protectedFields": {
+          "*": []
+        }
+      }
+    },
+    {
+      "className": "Users",
+      "fields": {
+        "objectId": {
+          "type": "String"
+        },
+        "createdAt": {
+          "type": "Date"
+        },
+        "updatedAt": {
+          "type": "Date"
+        },
+        "ACL": {
+          "type": "ACL"
+        },
+        "name": {
+          "type": "String"
+        },
+        "email": {
+          "type": "String"
+        },
+        "role": {
+          "type": "String"
+        },
+        "password": {
+          "type": "String"
+        }
+      },
+      "classLevelPermissions": {
+        "find": {
+          "*": true
+        },
+        "count": {
+          "*": true
+        },
+        "get": {
+          "*": true
+        },
+        "create": {
+          "*": true
+        },
+        "update": {
+          "*": true
+        },
+        "delete": {
+          "*": true
+        },
+        "addField": {
+          "*": true
+        },
+        "protectedFields": {
+          "*": []
+        }
+      },
+      "indexes": {
+        "_id_": {
+          "_id": 1
+        }
+      }
+    }
+  ]
+}
