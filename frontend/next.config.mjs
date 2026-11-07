@@ -17,9 +17,6 @@ const nextConfig = {
     ],
     qualities: [100, 75],
   },
-  turbopack: {
-    root: '..',
-  },
   async headers() {
     return [
       {

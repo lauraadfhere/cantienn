@@ -31,3 +31,7 @@ pnpm-debug.log*
 *.tgz
 *.rar
 *.7z
+
+# OpenNext / Wrangler build output
+.open-next
+.wrangler
